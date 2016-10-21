@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  {% load staticfiles %}
+  <link rel="stylesheet" href="{% static '/trips/css/trips.css' %}" media="screen" title="no title">
+  <title>Add a Trip</title>
+</head>
+<body>
+<a href="{% url 'trips:index' %}">Home</a>
+<a href="{% url 'login:logout' %}">Logout</a>
+
+  <form action="{% url 'trips:add' %}" method="post">
+
+      {% csrf_token %}
+      <h2>Add a Trip</h2>
+      <ul>
+        <li>Destination:<input type="text" name="d_name" value="" placeholder="eg.London"></li>
+        <li>Description:<input type="text" name="descrip" value="" placeholder="eg.visit Eiffel"></li>
+        <li>Travel Date From:<input type="date" name="f_date" value="" placeholder="yyyy-mm-dd"></li>
+        <li>Travel Date To:<input type="date" name="t_date" value="" placeholder="yyyy-mm-dd"></li>
+        <li><input type="submit" name="name" value="Add"></li>
+      </ul>
+  </form>
+
+
+  {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+
+</body>
+</html>

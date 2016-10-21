@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Hello,{{request.session.user.u_name}}</h1>
+  <h3>Succesfully registered! Please login to go to the dashboard</h3>
+  <form action="{% url 'login:logout' %}" value="Log Out">
+    <input type="submit" name="name" value="Log Out">
+  </form>
+</body>
+</html>
